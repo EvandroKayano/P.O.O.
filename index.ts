@@ -8,3 +8,4 @@ const contrato = new aluguel(caloi,marcelo,5)
 
 console.log(contrato.preco)
 console.log(contrato.cliente.nome)
+console.log(marcelo.cpf)
