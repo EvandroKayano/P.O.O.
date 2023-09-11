@@ -97,11 +97,11 @@ export class App{
         //ALTERAR A VARIÁVEL QUAND FIZER O DESCRIPTOG
         if(user.password === password){
             console.log(" ")
-            console.log("User Autentified!")
+            console.log("Logged in!")
         }
         else{
             console.log(" ")
-            console.log("User not found!")
+            console.log("Wrong User or Password!")
         }
 
     }
