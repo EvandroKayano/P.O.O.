@@ -102,8 +102,8 @@ export class App{
         const agora = new Date()
 
         rent.end = agora
-
-        
+        const hours = diff_hours(rent.end,rent.start)
+        return hours * rent.hourly
     }
 
     async autenticate(email:string,password:string): Promise <boolean>{
@@ -113,6 +113,14 @@ export class App{
     }
 
 }
+
+function diff_hours(dt2: Date, dt1: Date){
+
+  var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+  diff /= (60 * 60);
+  return Math.abs(diff);
+ }
+
 
 // '1' == 1 , TRUE
 // '1' === 1, FALSE
