@@ -76,7 +76,7 @@ export class App {
 
     async removeUser(email: string):Promise <void> {
         const openRent = await this.rentRepo.findOpenRentFor(email)
-        // se achar um rent
+        // se não achar um rent
         if (!openRent) { 
             await this.findUser(email)
             await this.userRepo.remove(email)
