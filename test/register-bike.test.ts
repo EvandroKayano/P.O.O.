@@ -4,11 +4,11 @@ import prisma from '../src/external/database/db'
 
 describe('Register user route', () => {
     beforeEach(async () => {
-        await prisma.user.deleteMany({})
+        await prisma.bike.deleteMany({})
     })
 
     afterAll(async () => {
-        await prisma.user.deleteMany({})
+        await prisma.bike.deleteMany({})
     })
 
     it('registers a bike with valid data',async () => {
