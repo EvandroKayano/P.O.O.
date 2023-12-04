@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+  rent     Rent[]
+}
+
+model Bike {
+  id          String     @id @default(uuid())
+  name        String
+  type        String
+  bodySize    Int
+  maxLoad     Int
+  rate        Float
+  description String
+  ratings     Float
+  imageURL    imageURL[]
+  available   Boolean    @default(true)
+  latitude    Float
+  longitude   Float
+  rent        Rent[]
+}
+
+model imageURL {
+  id     String @id @default(uuid())
+  url    String
+  //relacionamento para chave estrangeira
+  bike   Bike   @relation(fields: [bikeId], references: [id], onDelete: Cascade) // quando deletar a bike, as urls tb vão
+  bikeId String //chave estrangeira
+}
+
+model Rent {
+  id     String    @id @default(uuid())
+  bike   Bike      @relation(fields: [bikeId], references: [id], onDelete: Cascade)
+  bikeId String
+  user   User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  start  DateTime
+  end    DateTime?
+}
